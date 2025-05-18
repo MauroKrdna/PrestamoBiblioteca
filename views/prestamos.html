@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Prestamos</title>
+  <link rel="stylesheet" href="../Assets/css/main.css">
+  <link rel="stylesheet" href="../Assets/css/datatables.min.css">
+  <link rel="stylesheet" href="../Assets/css/select2.min.css">
+  <link rel="stylesheet" href="../Assets/css/font-awesome.min.css">
+</head>
+
+<body class="app sidebar-mini">
+  
+   <!-- HEADER -->
+  <header class="app-header">
+    <a class="app-header__logo" href="#">Mi Proyecto</a>
+    <ul class="app-nav list-unstyled mb-0 d-flex align-items-center">
+      <li>
+        <a href="index.html" class="text-white">Salir</a> <!-- Enlace para cerrar sesión -->
+      </li>
+    </ul>
+  </header>
+
+  <!--SIDEBAR) -->
+  <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+  <aside class="app-sidebar">
+      <div class="app-sidebar__user">
+          <img class="app-sidebar__user-avatar" src="../Assets/img/user.png" alt="Usuario">
+          <div>
+              <p class="app-sidebar__user-name">Admin</p>
+              <p class="app-sidebar__user-designation">Administrador</p>
+          </div>
+      </div>
+      <ul class="app-menu">
+          <li><a class="app-menu__item" href="home.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+          <li><a class="app-menu__item" href="usuarios.html"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Usuarios</span></a></li>
+          <li><a class="app-menu__item" href="libros.html"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Libros</span></a></li>
+          <li><a class="app-menu__item" href="prestamos.html"><i class="app-menu__icon fa fa-hourglass-start"></i><span class="app-menu__label">Prestamos</span></a></li>
+          <li><a class="app-menu__item" href="configuracion.html"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Configuración</span></a></li>
+      </ul>
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="app-content">
+    <div class="app-title">
+      <div>
+        <!-- Icono + Título de la página -->
+        <h1><i class="fa fa-dashboard"></i> Préstamos</h1>
+      </div>
+    </div>
+
+    <!-- Botón para abrir formulario de nuevo préstamo
+         (sin JS aún no funcionará la función frmPrestar) -->
+    <button class="btn btn-primary mb-2" type="button">
+      <i class="fa fa-plus"></i> Nuevo Préstamo
+    </button>
+
+    <!-- Tabla para mostrar los préstamos -->
+    <div class="tile">
+      <div class="tile-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped mt-4" id="tblPrestar">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id</th>
+                <th>Libro</th>
+                <th>Estudiante</th>
+                <th>Fecha Préstamo</th>
+                <th>Fecha Devolución</th>
+                <th>Cant</th>
+                <th>Observación</th>
+                <th>Estado</th>
+                <th></th> <!-- Columna para acciones -->
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Aquí se agregarán las filas dinámicamente cuando uses JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para registrar préstamo
+         Actualmente solo el HTML, no funciona sin JS -->
+    <div id="prestar" class="modal fade" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="title">Prestar Libro</h5>
+            <button class="close" data-dismiss="modal" aria-label="Cerrar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <form id="frmPrestar" onsubmit="registroPrestamos(event)">
+              <div class="form-group">
+                <label for="libro">Libro</label>
+                <select id="libro" class="form-control libro" name="libro" required>
+                  <!-- Opciones cargadas con JS -->
+                </select>
+              </div>
+
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="form-group">
+                    <label for="estudiante">Estudiante</label>
+                    <select id="estudiante" class="form-control estudiante" name="estudiante" required>
+                      <!-- Opciones cargadas con JS -->
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="cantidad">Cantidad</label>
+                    <input id="cantidad" class="form-control" type="number" name="cantidad" min="1" required>
+                    <strong id="msg_error"></strong>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="fecha_prestamo">Fecha de Préstamo</label>
+                    <input id="fecha_prestamo" class="form-control" type="date" name="fecha_prestamo" value="2025-05-17" required>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="fecha_devolucion">Fecha de Devolución</label>
+                    <input id="fecha_devolucion" class="form-control" type="date" name="fecha_devolucion" value="2025-05-17" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="observacion">Observación</label>
+                <textarea id="observacion" class="form-control" name="observacion" rows="3" placeholder="Observación"></textarea>
+              </div>
+
+              <button class="btn btn-primary" type="submit">Prestar</button>
+              <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--
+    Scripts JS
+    Actualmente no necesarios, ya que no usas JS
+  -->
+</body>
+</html>
