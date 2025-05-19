@@ -1,188 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito - Librería Virtual</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <!--Font Awesome -->
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="/Assets/css/style.css">
-
-
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/book-icon.png" type="image/png">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar">
-        <div class="container-fluid">
-          <!-- Logo y toggle -->
-          <a class="navbar-brand" href="index.html" id="logo">
-            <i class="fas fa-book-open me-2"></i>LIB<span>RERÍA</span>
-          </a>
-          <!-- Menú -->
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" href="#" id="first-child">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#featured">Destacados</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                Categorías
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Ficción</a></li>
-                <li><a class="dropdown-item" href="#">No Ficción</a></li>
-                <li><a class="dropdown-item" href="#">Infantil</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">Sobre Nosotros</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contacto</a>
-            </li>
-          </ul>
-          <!-- Iconos usuario/carrito -->
-          <div class="d-flex align-items-center">
-            <div class="icons">
-              <a href="login.html" class="text-white me-3">
-                <i class="fa-regular fa-user me-1"></i>Ingresar
-              </a>
-              <div class="carrito ms-3">
-                <i class="fa-solid fa-book-bookmark"></i>
-                <span class="contar-pro">0</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-    <!-- Seccion 2: Contenido principal del carrito -->
-    <main class="cart-page" style="margin-top: 80px;">
-        <!-- Título -->
-        <h2 class="page-title text-center my-5 py-3 bg-primary text-white">Préstamos Actuales</h2>
-        
-        <div class="container-fluid">
-        <div class="row">
-            <!-- Tabla de libros en el carrito -->
-            <div class="col-lg-8 mb-4 mb-lg-0 px-lg-5 px-3">
-            <div class="table-responsive mb-5">
-                <table class="table cart-table">
-                <thead class="table-dark">
-                    <tr>
-                    <th class="h6">ID</th>
-                    <th class="h6">LIBRO</th>
-                    <th class="h6">TIPO</th>
-                    <th class="h6">DURACIÓN</th>
-                    <th class="h6">ACCIONES</th>
-                    </tr>
-                </thead>
-                <tbody id="cart-items">
-                    <!-- Los libros se cargarán aquí con JavaScript -->
-                </tbody>
-                </table>
-            </div>
-            
-            <a href="index.html" class="btn btn-outline-primary">
-                <i class="fas fa-arrow-left me-2"></i>Seguir Buscando Libros
+    <!-- Navbar simplificado para checkout -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-book-open text-primary me-2"></i>Librería Virtual
             </a>
-            </div>
-            
-            <!-- Resumen del pedido -->
-            <div class="col-lg-4 px-lg-3 px-3">
-            <div class="cart-summary p-4 bg-light rounded">
-                <h5 class="title mb-4 border-bottom pb-3">RESUMEN DE PRÉSTAMO</h5>
-                
-                <div class="cart-summary-detail mb-4">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <p class="lead">Libros seleccionados:</p>
-                    <p class="lead fw-bold" id="book-count">0</p>
-                </div>
-                
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <p class="lead">Tipo de préstamo:</p>
-                    <select class="form-select loan-type" style="width: auto;">
-                    <option value="7">7 días (Estándar)</option>
-                    <option value="14">14 días (Extendido)</option>
-                    <option value="21">21 días (Premium)</option>
-                    </select>
-                </div>
-                
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <p class="lead">Fecha de devolución:</p>
-                    <p class="lead fw-bold" id="return-date">-</p>
-                </div>
-                
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <p class="lead">Multa por retraso:</p>
-                    <p class="lead fw-bold">$5.000/día</p>
-                </div>
-                </div>
-                
-                <div class="d-flex justify-content-between align-items-center mb-4 border-top pt-3">
-                <h5 class="text-primary">TOTAL</h5>
-                <h5 class="text-primary" id="cart-total">$0</h5>
-                </div>
-                
-                <button type="button" class="btn btn-dark w-100 py-2" id="checkout-btn">
-                <i class="fas fa-check-circle me-2"></i>Confirmar Préstamo
-                </button>
-            </div>
+            <div class="d-flex align-items-center">
+                <span class="badge bg-primary rounded-pill me-2" id="cart-counter">0</span>
+                <span class="text-muted">Paso 1 de 2</span>
             </div>
         </div>
+    </nav>
+
+    <!-- Contenido principal del carrito -->
+    <main class="container my-4">
+        <div class="row g-4">
+            <!-- Lista de productos -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white border-bottom">
+                        <h2 class="h5 mb-0">
+                            <i class="fas fa-shopping-cart text-primary me-2"></i>
+                            Tus libros seleccionados
+                        </h2>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width: 60px;"></th>
+                                        <th>Libro</th>
+                                        <th class="text-center" style="width: 120px;">Tipo</th>
+                                        <th class="text-center" style="width: 100px;">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cart-items">
+                                    <!-- Los libros se cargarán aquí con JavaScript -->
+                                    <tr id="empty-cart">
+                                        <td colspan="4" class="text-center py-5 text-muted">
+                                            <i class="fas fa-book-open fa-2x mb-3"></i>
+                                            <p class="mb-0">No tienes libros en tu carrito</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-top">
+                        <a href="index.html" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left me-2"></i>Continuar buscando
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumen del pedido -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm sticky-top" style="top: 20px;">
+                    <div class="card-header bg-white border-bottom">
+                        <h2 class="h5 mb-0">
+                            <i class="fas fa-receipt text-primary me-2"></i>
+                            Resumen del préstamo
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Tipo de préstamo</label>
+                            <select class="form-select loan-type">
+                                <option value="7">7 días (Estándar)</option>
+                                <option value="14">14 días (Extendido)</option>
+                                <option value="21">21 días (Premium)</option>
+                            </select>
+                        </div>
+
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                                <span>Libros seleccionados</span>
+                                <span class="fw-bold" id="book-count">0</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                                <span>Fecha de devolución</span>
+                                <span class="fw-bold" id="return-date">-</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 text-danger">
+                                <span>Multa por retraso</span>
+                                <span class="fw-bold">$5.000/día</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-top px-0 pt-3">
+                                <h5 class="mb-0">Total</h5>
+                                <h5 class="mb-0 text-primary" id="cart-total">$0</h5>
+                            </li>
+                        </ul>
+
+                        <button type="button" class="btn btn-primary w-100 py-2" id="checkout-btn">
+                            <i class="fas fa-lock me-2"></i>Proceder al pago
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
-      <!--Seccion 3: Footer existente -->
-    <footer class="site-footer bg-dark text-white pt-5">
+    <!-- Footer simplificado -->
+    <footer class="bg-light border-top mt-5 py-4">
         <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-            <h4>Librería Virtual</h4>
-            <p>Tu destino para descubrir grandes historias y ampliar tu conocimiento.</p>
-            <div class="footer-logo mt-3">
-                <i class="fas fa-book-open"></i> LIB<span>RERÍA</span>
-            </div>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-            <h4>Enlaces rápidos</h4>
-            <ul class="list-unstyled">
-                <li class="mb-2"><a href="index.html" class="text-white">Inicio</a></li>
-                <li class="mb-2"><a href="index.html#featured" class="text-white">Destacados</a></li>
-                <li class="mb-2"><a href="index.html#about" class="text-white">Sobre Nosotros</a></li>
-                <li class="mb-2"><a href="index.html#contact" class="text-white">Contacto</a></li>
-            </ul>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-            <h4>Suscríbete</h4>
-            <p>Recibe nuestras novedades y promociones.</p>
-            <form class="subscribe-form mt-3">
-                <div class="input-group">
-                <input type="email" class="form-control" placeholder="Tu correo">
-                <button class="btn btn-primary" type="submit">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 small text-muted">&copy; 2023 Librería Virtual. Todos los derechos reservados.</p>
                 </div>
-            </form>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-decoration-none small text-muted me-3">Términos y condiciones</a>
+                    <a href="#" class="text-decoration-none small text-muted">Política de privacidad</a>
+                </div>
             </div>
-        </div>
-        
-        <div class="footer-bottom text-center py-3 border-top mt-4">
-            <p class="mb-0">&copy; 2023 Librería Virtual. Todos los derechos reservados.</p>
-        </div>
         </div>
     </footer>
 
-  <!-- Botón para ir arriba -->
-  <a href="#" class="arrow"><i class="fa-solid fa-arrow-up"></i></a>
-  
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/carrito.js"></script>
-
-    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/carrito.js"></script>
 </body>
 </html>
