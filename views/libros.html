@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Libros</title>
 
-  <!-- Estilos principales del proyecto -->
-  <link rel="stylesheet" href="../Assets/css/main.css" />
-  <!-- Eliminado font-awesome porque no está disponible -->
+  <!-- Estilos -->
+  <link rel="stylesheet" href="/Assets/css/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="app sidebar-mini">
 
@@ -31,32 +31,28 @@
       </div>
     </div>
     <ul class="app-menu">
-      <li><a class="app-menu__item" href="home.html"><span class="app-menu__label">Dashboard</span></a></li>
-      <li><a class="app-menu__item" href="usuarios.html"><span class="app-menu__label">Usuarios</span></a></li>
-      <li><a class="app-menu__item active" href="libros.html"><span class="app-menu__label">Libros</span></a></li>
-      <li><a class="app-menu__item" href="prestamos.html"><span class="app-menu__label">Prestamos</span></a></li>
-      <li><a class="app-menu__item" href="configuracion.html"><span class="app-menu__label">Configuración</span></a></li>
+      <li><a class="app-menu__item" href="home.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+      <li><a class="app-menu__item" href="usuarios.html"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Usuarios</span></a></li>
+      <li><a class="app-menu__item active" href="libros.html"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Libros</span></a></li>
+      <li><a class="app-menu__item" href="prestamos.html"><i class="app-menu__icon fa fa-hourglass-start"></i><span class="app-menu__label">Préstamos</span></a></li>
+      <li><a class="app-menu__item" href="configuracion.html"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Configuración</span></a></li>
     </ul>
   </aside>
 
   <!-- Contenido principal -->
   <main class="app-content">
-    <div class="app-title">
-      <div>
-        <h1>Libros - Inventario</h1>
-      </div>
+    <div class="app-title d-flex justify-content-between align-items-center mb-3">
+      <h1><i class="fa fa-book"></i> Libros</h1>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#nuevoLibro">
+        <i class="fa fa-plus"></i> Nuevo Libro
+      </button>
     </div>
 
-    <!-- Botón para agregar nuevo libro -->
-    <button class="btn btn-primary mb-2" type="button">
-      Nuevo Libro
-    </button>
-
-    <!-- Tabla que muestra el inventario de libros -->
+    <!-- Tabla -->
     <div class="tile">
       <div class="tile-body">
         <div class="table-responsive">
-          <table class="table table-bordered table-hover table-striped mt-4" id="tblLibros">
+          <table class="table table-bordered table-hover table-striped" id="tblLibros">
             <thead class="thead-dark">
               <tr>
                 <th>Id</th>
@@ -72,7 +68,6 @@
               </tr>
             </thead>
             <tbody>
-              <!-- Ejemplo estático -->
               <tr>
                 <td>1</td>
                 <td>El Principito</td>
@@ -84,8 +79,8 @@
                 <td>Libro infantil clásico.</td>
                 <td>Disponible</td>
                 <td>
-                  <button class="btn btn-sm btn-warning">Editar</button>
-                  <button class="btn btn-sm btn-danger">Eliminar</button>
+                  <button class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></button>
+                  <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
             </tbody>
@@ -94,91 +89,24 @@
       </div>
     </div>
 
-    <!-- Modal para registro o edición de libro -->
+    <!-- Modal -->
     <div id="nuevoLibro" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header bg-primary text-white">
             <h5 class="modal-title" id="title">Registro Libro</h5>
-            <button class="close" data-dismiss="modal" aria-label="Cerrar">
+            <button class="close text-white" data-dismiss="modal" aria-label="Cerrar">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <form id="frmLibro" class="row">
-              <input type="hidden" id="id" name="id" />
-              <div class="col-md-8">
-                <div class="form-group">
-                  <label for="titulo">Título</label>
-                  <input id="titulo" class="form-control" type="text" name="titulo" placeholder="Título del libro" required />
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="autor">Autor</label>
-                  <select id="autor" class="form-control" name="autor" required>
-                    <option value="">Seleccione</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="editorial">Editorial</label>
-                  <select id="editorial" class="form-control" name="editorial" required>
-                    <option value="">Seleccione</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-5">
-                <div class="form-group">
-                  <label for="materia">Materia</label>
-                  <select id="materia" class="form-control" name="materia" required>
-                    <option value="">Seleccione</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="cantidad">Cantidad</label>
-                  <input id="cantidad" class="form-control" type="number" name="cantidad" min="0" required />
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="num_pagina">Cantidad de páginas</label>
-                  <input id="num_pagina" class="form-control" type="number" name="num_pagina" min="1" required />
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="anio_edicion">Año Edición</label>
-                  <input id="anio_edicion" class="form-control" type="date" name="anio_edicion" required />
-                </div>
-              </div>
-              <div class="col-md-5">
-                <div class="form-group">
-                  <label for="descripcion">Descripción</label>
-                  <textarea id="descripcion" class="form-control" name="descripcion" rows="2" placeholder="Descripción"></textarea>
-                </div>
-              </div>
+   
+              <!-- Botones finales -->
               <div class="col-md-12">
-                <div class="form-group">
-                  <label>Foto</label>
-                  <div class="card border-primary">
-                    <div class="card-body">
-                      <input type="hidden" id="foto_actual" name="foto_actual" />
-                      <label for="imagen" id="icon-image" class="btn btn-primary">Subir Imagen</label>
-                      <span id="icon-cerrar"></span>
-                      <input id="imagen" class="d-none" type="file" name="imagen" />
-                      <img class="img-thumbnail" id="img-preview" src="" width="150" alt="Vista previa imagen" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <button class="btn btn-primary" type="submit" id="btnAccion">Registrar</button>
-                  <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
+                <div class="form-group d-flex justify-content-end">
+                  <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-save"></i> Registrar</button>
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                 </div>
               </div>
             </form>
@@ -192,6 +120,10 @@
   <footer class="text-center mt-4 mb-3 text-muted">
     <small>© 2025 Biblioteca Escolar</small>
   </footer>
+
+  <!-- Scripts necesarios -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS -->
     <link href="../Assets/css/main.css" rel="stylesheet">
-    <link href="../Assets/css/datatables.min.css" rel="stylesheet">
-    <link href="../Assets/css/select2.min.css" rel="stylesheet">
-    <link href="../Assets/css/estilos.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../Assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 </head>
 <body class="app sidebar-mini">
 
@@ -24,24 +22,63 @@
     </ul>
   </header>
 
-    <!--SIDEBAR) -->
-    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-    <aside class="app-sidebar">
-        <div class="app-sidebar__user">
-            <img class="app-sidebar__user-avatar" src="../Assets/img/user.png" alt="Usuario">
-            <div>
-                <p class="app-sidebar__user-name">Admin</p>
-                <p class="app-sidebar__user-designation">Administrador</p>
-            </div>
-        </div>
-        <ul class="app-menu">
-            <li><a class="app-menu__item" href="home.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-            <li><a class="app-menu__item" href="usuarios.html"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Usuarios</span></a></li>
-            <li><a class="app-menu__item" href="libros.html"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Libros</span></a></li>
-            <li><a class="app-menu__item" href="prestamos.html"><i class="app-menu__icon fa fa-hourglass-start"></i><span class="app-menu__label">Prestamos</span></a></li>
-            <li><a class="app-menu__item" href="configuracion.html"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Configuración</span></a></li>
-        </ul>
-    </aside>
+    <!-- SIDEBAR -->
+  <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+  <aside class="app-sidebar">
+    <div class="app-sidebar__user">
+      <img
+        class="app-sidebar__user-avatar"
+        src="../Assets/img/user.png"
+        alt="Usuario"
+      />
+      <div>
+        <p class="app-sidebar__user-name">Admin</p>
+        <p class="app-sidebar__user-designation">Administrador</p>
+      </div>
+    </div>
+    <ul class="app-menu">
+      <li>
+        <a
+          class="app-menu__item"
+          href="home.html"
+          ><i class="app-menu__icon fa fa-dashboard"></i
+          ><span class="app-menu__label">Dashboard</span></a
+        >
+      </li>
+      <li>
+        <a
+          class="app-menu__item"
+          href="usuarios.html"
+          ><i class="app-menu__icon fa fa-users"></i
+          ><span class="app-menu__label">Usuarios</span></a
+        >
+      </li>
+      <li>
+        <a
+          class="app-menu__item"
+          href="libros.html"
+          ><i class="app-menu__icon fa fa-book"></i
+          ><span class="app-menu__label">Libros</span></a
+        >
+      </li>
+      <li>
+        <a
+          class="app-menu__item active"
+          href="prestamos.html"
+          ><i class="app-menu__icon fa fa-hourglass-start"></i
+          ><span class="app-menu__label">Préstamos</span></a
+        >
+      </li>
+      <li>
+        <a
+          class="app-menu__item"
+          href="configuracion.html"
+          ><i class="app-menu__icon fa fa-cogs"></i
+          ><span class="app-menu__label">Configuración</span></a
+        >
+      </li>
+    </ul>
+  </aside>
 
     <!-- Contenido principal -->
     <main class="app-content">
