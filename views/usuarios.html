@@ -6,10 +6,6 @@
   <title>Gestión de Usuarios</title>
 
   <link rel="stylesheet" href="../Assets/css/main.css" />
-  <link rel="stylesheet" href="../Assets/css/datatables.min.css" />
-  <link rel="stylesheet" href="../Assets/css/select2.min.css" />
-  <link rel="stylesheet" href="../Assets/css/font-awesome.min.css" />
-  
 </head>
 
 <body class="app sidebar-mini">
@@ -17,63 +13,87 @@
   <!-- HEADER -->
   <header class="app-header">
     <a class="app-header__logo" href="#">Mi Proyecto</a>
-    <ul class="app-nav list-unstyled mb-0 d-flex align-items-center">
+    <ul class="app-nav">
       <li>
         <a href="index.html" class="text-white">Salir</a> <!-- Enlace para cerrar sesión -->
       </li>
     </ul>
   </header>
 
-  <!--SIDEBAR) -->
+  <!-- SIDEBAR -->
   <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
   <aside class="app-sidebar">
-      <div class="app-sidebar__user">
-          <img class="app-sidebar__user-avatar" src="../Assets/img/user.png" alt="Usuario">
-          <div>
-              <p class="app-sidebar__user-name">Admin</p>
-              <p class="app-sidebar__user-designation">Administrador</p>
-          </div>
+    <div class="app-sidebar__user">
+      <img class="app-sidebar__user-avatar" src="../Assets/img/user.png" alt="Usuario" />
+      <div>
+        <p class="app-sidebar__user-name">Admin</p>
+        <p class="app-sidebar__user-designation">Administrador</p>
       </div>
-      <ul class="app-menu">
-          <li><a class="app-menu__item" href="home.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-          <li><a class="app-menu__item" href="usuarios.html"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Usuarios</span></a></li>
-          <li><a class="app-menu__item" href="libros.html"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Libros</span></a></li>
-          <li><a class="app-menu__item" href="prestamos.html"><i class="app-menu__icon fa fa-hourglass-start"></i><span class="app-menu__label">Prestamos</span></a></li>
-          <li><a class="app-menu__item" href="configuracion.html"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Configuración</span></a></li>
-      </ul>
+    </div>
+    <ul class="app-menu">
+      <li><a class="app-menu__item" href="home.html"><span class="app-menu__label">Dashboard</span></a></li>
+      <li><a class="app-menu__item active" href="usuarios.html"><span class="app-menu__label">Usuarios</span></a></li>
+      <li><a class="app-menu__item" href="libros.html"><span class="app-menu__label">Libros</span></a></li>
+      <li><a class="app-menu__item" href="prestamos.html"><span class="app-menu__label">Prestamos</span></a></li>
+      <li><a class="app-menu__item" href="configuracion.html"><span class="app-menu__label">Configuración</span></a></li>
+    </ul>
   </aside>
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="app-content">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h1><i class="fa fa-users"></i> Usuarios</h1>
+    <div class="app-title d-flex justify-content-between align-items-center">
+      <h1>Usuarios</h1>
       <button class="btn btn-primary" onclick="abrirFormularioUsuario();">
-        <i class="fa fa-plus"></i> Nuevo Usuario
+        Nuevo Usuario
       </button>
     </div>
 
-    <table class="table table-bordered table-hover bg-white">
-      <thead class="thead-dark">
-        <tr>
-          <th>Id</th>
-          <th>Usuario</th>
-          <th>Nombre</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody id="tablaUsuarios">
-        <tr>
-          <td>1</td>
-          <td>jdoe</td>
-          <td>John Doe</td>
-          <td>Activo</td>
-          <td>
-            <button class="btn btn-sm btn-warning" onclick="abrirFormularioUsuario(1, 'jdoe', 'John Doe');">Editar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="tile">
+      <div class="tile-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped" id="tablaUsuarios">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id</th>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>jdoe</td>
+                <td>John Doe</td>
+                <td>Activo</td>
+                <td>
+                  <button class="btn btn-sm btn-warning" onclick="abrirFormularioUsuario(1, 'jdoe', 'John Doe');">Editar</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>asmith</td>
+                <td>Alice Smith</td>
+                <td>Inactivo</td>
+                <td>
+                  <button class="btn btn-sm btn-warning" onclick="abrirFormularioUsuario(2, 'asmith', 'Alice Smith');">Editar</button>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>bjones</td>
+                <td>Bob Jones</td>
+                <td>Activo</td>
+                <td>
+                  <button class="btn btn-sm btn-warning" onclick="abrirFormularioUsuario(3, 'bjones', 'Bob Jones');">Editar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </main>
 
   <!-- MODAL -->
@@ -141,8 +161,8 @@
 
     function guardarUsuario() {
       const id = document.getElementById('usuarioId').value;
-      const usuario = document.getElementById('usuario').value;
-      const nombre = document.getElementById('nombre').value;
+      const usuario = document.getElementById('usuario').value.trim();
+      const nombre = document.getElementById('nombre').value.trim();
       const clave = document.getElementById('clave').value;
       const confirmar = document.getElementById('confirmar').value;
 

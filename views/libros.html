@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Libros</title>
 
-  <!-- Estilos similares a prestamos y estudiantes -->
+  <!-- Estilos principales del proyecto -->
   <link rel="stylesheet" href="../Assets/css/main.css" />
-  <link rel="stylesheet" href="../Assets/css/datatables.min.css" />
-  <link rel="stylesheet" href="../Assets/css/select2.min.css" />
-  <link rel="stylesheet" href="../Assets/css/font-awesome.min.css" />
+  <!-- Eliminado font-awesome porque no está disponible -->
 </head>
 <body class="app sidebar-mini">
 
@@ -22,36 +20,39 @@
     </ul>
   </header>
 
-  <!--SIDEBAR) -->
+  <!-- Sidebar -->
   <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
   <aside class="app-sidebar">
-      <div class="app-sidebar__user">
-          <img class="app-sidebar__user-avatar" src="../Assets/img/user.png" alt="Usuario">
-          <div>
-              <p class="app-sidebar__user-name">Admin</p>
-              <p class="app-sidebar__user-designation">Administrador</p>
-          </div>
+    <div class="app-sidebar__user">
+      <img class="app-sidebar__user-avatar" src="../Assets/img/user.png" alt="Usuario" />
+      <div>
+        <p class="app-sidebar__user-name">Admin</p>
+        <p class="app-sidebar__user-designation">Administrador</p>
       </div>
-      <ul class="app-menu">
-          <li><a class="app-menu__item" href="home.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-          <li><a class="app-menu__item" href="usuarios.html"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Usuarios</span></a></li>
-          <li><a class="app-menu__item" href="libros.html"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Libros</span></a></li>
-          <li><a class="app-menu__item" href="prestamos.html"><i class="app-menu__icon fa fa-hourglass-start"></i><span class="app-menu__label">Prestamos</span></a></li>
-          <li><a class="app-menu__item" href="configuracion.html"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Configuración</span></a></li>
-      </ul>
+    </div>
+    <ul class="app-menu">
+      <li><a class="app-menu__item" href="home.html"><span class="app-menu__label">Dashboard</span></a></li>
+      <li><a class="app-menu__item" href="usuarios.html"><span class="app-menu__label">Usuarios</span></a></li>
+      <li><a class="app-menu__item active" href="libros.html"><span class="app-menu__label">Libros</span></a></li>
+      <li><a class="app-menu__item" href="prestamos.html"><span class="app-menu__label">Prestamos</span></a></li>
+      <li><a class="app-menu__item" href="configuracion.html"><span class="app-menu__label">Configuración</span></a></li>
+    </ul>
   </aside>
 
+  <!-- Contenido principal -->
   <main class="app-content">
     <div class="app-title">
       <div>
-        <h1><i class="fa fa-dashboard"></i> Libros</h1>
+        <h1>Libros - Inventario</h1>
       </div>
     </div>
 
+    <!-- Botón para agregar nuevo libro -->
     <button class="btn btn-primary mb-2" type="button">
-      <i class="fa fa-plus"></i> Nuevo Libro
+      Nuevo Libro
     </button>
 
+    <!-- Tabla que muestra el inventario de libros -->
     <div class="tile">
       <div class="tile-body">
         <div class="table-responsive">
@@ -60,25 +61,40 @@
               <tr>
                 <th>Id</th>
                 <th>Título</th>
-                <th>Cant</th>
+                <th>Cantidad</th>
                 <th>Autor</th>
                 <th>Editorial</th>
                 <th>Materia</th>
                 <th>Foto</th>
                 <th>Descripción</th>
                 <th>Estado</th>
-                <th></th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              <!-- Aquí irá contenido dinámico -->
+              <!-- Ejemplo estático -->
+              <tr>
+                <td>1</td>
+                <td>El Principito</td>
+                <td>5</td>
+                <td>Antoine de Saint-Exupéry</td>
+                <td>Editorial XYZ</td>
+                <td>Literatura</td>
+                <td><img src="../Assets/img/principito.jpg" alt="El Principito" width="50" /></td>
+                <td>Libro infantil clásico.</td>
+                <td>Disponible</td>
+                <td>
+                  <button class="btn btn-sm btn-warning">Editar</button>
+                  <button class="btn btn-sm btn-danger">Eliminar</button>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- Modal Registro Libro -->
+    <!-- Modal para registro o edición de libro -->
     <div id="nuevoLibro" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -88,17 +104,15 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-
           <div class="modal-body">
             <form id="frmLibro" class="row">
+              <input type="hidden" id="id" name="id" />
               <div class="col-md-8">
                 <div class="form-group">
                   <label for="titulo">Título</label>
-                  <input type="hidden" id="id" name="id" />
                   <input id="titulo" class="form-control" type="text" name="titulo" placeholder="Título del libro" required />
                 </div>
               </div>
-
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="autor">Autor</label>
@@ -107,7 +121,6 @@
                   </select>
                 </div>
               </div>
-
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="editorial">Editorial</label>
@@ -116,7 +129,6 @@
                   </select>
                 </div>
               </div>
-
               <div class="col-md-5">
                 <div class="form-group">
                   <label for="materia">Materia</label>
@@ -125,50 +137,44 @@
                   </select>
                 </div>
               </div>
-
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="cantidad">Cantidad</label>
-                  <input id="cantidad" class="form-control" type="number" name="cantidad" required />
+                  <input id="cantidad" class="form-control" type="number" name="cantidad" min="0" required />
                 </div>
               </div>
-
               <div class="col-md-3">
                 <div class="form-group">
-                  <label for="num_pagina">Cantidad de página</label>
-                  <input id="num_pagina" class="form-control" type="number" name="num_pagina" required />
+                  <label for="num_pagina">Cantidad de páginas</label>
+                  <input id="num_pagina" class="form-control" type="number" name="num_pagina" min="1" required />
                 </div>
               </div>
-
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="anio_edicion">Año Edición</label>
                   <input id="anio_edicion" class="form-control" type="date" name="anio_edicion" required />
                 </div>
               </div>
-
               <div class="col-md-5">
                 <div class="form-group">
                   <label for="descripcion">Descripción</label>
                   <textarea id="descripcion" class="form-control" name="descripcion" rows="2" placeholder="Descripción"></textarea>
                 </div>
               </div>
-
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Foto</label>
                   <div class="card border-primary">
                     <div class="card-body">
                       <input type="hidden" id="foto_actual" name="foto_actual" />
-                      <label for="imagen" id="icon-image" class="btn btn-primary"><i class="fa fa-cloud-upload"></i></label>
+                      <label for="imagen" id="icon-image" class="btn btn-primary">Subir Imagen</label>
                       <span id="icon-cerrar"></span>
                       <input id="imagen" class="d-none" type="file" name="imagen" />
-                      <img class="img-thumbnail" id="img-preview" src="" width="150" />
+                      <img class="img-thumbnail" id="img-preview" src="" width="150" alt="Vista previa imagen" />
                     </div>
                   </div>
                 </div>
               </div>
-
               <div class="col-md-12">
                 <div class="form-group">
                   <button class="btn btn-primary" type="submit" id="btnAccion">Registrar</button>
@@ -177,7 +183,6 @@
               </div>
             </form>
           </div>
-
         </div>
       </div>
     </div>
