@@ -1,14 +1,13 @@
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import Dashboard from './components/dashboard';
+import Dashboard from '../components/Dashboard';
 
 function App() {
   return (
     <Router>
       <div className="d-flex">
         <Sidebar />
-        <div className="flex-grow-1 p-4">
+        <div className="flex-grow-1 p-4 container-fluid">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/crear" element={<h1>Crear Producto</h1>} />
