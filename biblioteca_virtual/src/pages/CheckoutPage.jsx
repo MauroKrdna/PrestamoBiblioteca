@@ -1,6 +1,6 @@
-import Checkout from '../components/Checkout'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
+import Checkout from '../components/Public/Checkout'
+import Footer from '../components/Public/Footer'
+import Navbar from '../components/Public/Navbar'
 
 export default function CheckoutPage() {
   return (
