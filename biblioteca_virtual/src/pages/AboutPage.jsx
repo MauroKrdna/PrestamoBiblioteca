@@ -1,13 +1,13 @@
-import OurSection from '../components/OurSection'
-import BenefitsSection from '../components/BenefitsSection'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
+import BenefitsSection from '../components/Public/BenefitsSection'
+import Footer from '../components/Public/Footer'
+import Navbar from '../components/Public/Navbar'
+import Ours from '../components/Public/Ours'
 
 export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <OurSection />
+      <Ours />
       <BenefitsSection />
       <Footer />
     </>

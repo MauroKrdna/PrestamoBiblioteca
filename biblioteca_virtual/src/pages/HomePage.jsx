@@ -1,8 +1,8 @@
-import Navbar from "../components/Navbar"
-import HeroSection from "../components/HeroSection"
-import BenefitsSection from "../components/BenefitsSection"
-import FeaturedBooks from "../components/FeaturedBooks"
-import Footer from "../components/Footer"
+import Navbar from "../components/Public/Navbar"
+import HeroSection from "../components/Public/HeroSection"
+import BenefitsSection from "../components/Public/BenefitsSection"
+import FeaturedBooks from "../components/Public/FeaturedBooks"
+import Footer from "../components/Public/Footer"
 
 
 export default function HomePage() {

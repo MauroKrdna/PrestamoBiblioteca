@@ -11,6 +11,7 @@ export default function Navbar() {
         <Link to="/Books" className="w3-bar-item w3-button w3-mobile me-5">Books</Link>
         <Link to="/About" className="w3-bar-item w3-button w3-mobile me-5">About</Link>
         <Link to="/Contact" className="w3-bar-item w3-button w3-mobile">Contact</Link>
+        <Link to="/Prestamos" className="w3-bar-item w3-button w3-mobile">Prestamos</Link>
       </div>
 
       {/* Bloque derecho separado con margen izquierdo más grande */}

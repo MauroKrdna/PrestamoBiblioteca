@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function OurSection() {
+export default function Ours() {
+  
   return (
     <div className="w3-container w3-padding-64" id="about-us">
 
