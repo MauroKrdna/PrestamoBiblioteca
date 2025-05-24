@@ -1,33 +1,31 @@
 import React from 'react';
 
 function PrestamosTable() {
-  const prestamos = [
-    { id: 1, libro: "React.js Básico", usuario: "Juan Pérez", fecha: "2025-05-20" },
-    { id: 2, libro: "Java Avanzado", usuario: "Ana Gómez", fecha: "2025-05-19" },
-    { id: 3, libro: "Python para Todos", usuario: "Luis Díaz", fecha: "2025-05-18" },
-  ];
-
   return (
     <div className="mt-4">
-      <h5>Últimos Préstamos</h5>
+      <h2>Listado de Préstamos</h2>
       <table className="table table-striped">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Libro</th>
             <th>Usuario</th>
-            <th>Fecha</th>
+            <th>Fecha Préstamo</th>
+            <th>Fecha Devolución</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {prestamos.map(({ id, libro, usuario, fecha }) => (
-            <tr key={id}>
-              <td>{id}</td>
-              <td>{libro}</td>
-              <td>{usuario}</td>
-              <td>{fecha}</td>
-            </tr>
-          ))}
+          <tr>
+            <td>1</td>
+            <td>Juan Pérez</td>
+            <td>2025-05-21</td>
+            <td>2025-06-01</td>
+            <td>
+              <button className="btn btn-sm btn-warning me-2">Editar</button>
+              <button className="btn btn-sm btn-danger">Eliminar</button>
+            </td>
+          </tr>
+          {/* Puedes duplicar las filas con datos de ejemplo */}
         </tbody>
       </table>
     </div>
