@@ -1,22 +1,32 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 
 function App() {
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const adminLogged = localStorage.getItem('isAdmin') === 'true';
+    setIsAdmin(adminLogged);
+  }, []);
+
+  const handleLogin = (status) => {
+    setIsAdmin(status);
+  };
+
   return (
     <Router>
-      <Sidebar />
-      <div style={{ marginLeft: "250px" }}>
-        <Header />
-        <main style={{ marginTop: "60px", padding: "20px" }}>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/crear" element={<h1>Crear Producto</h1>} />
-            <Route path="/listado" element={<h1>Listado de Productos</h1>} />
-          </Routes>
-        </main>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={isAdmin ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />}
+        />
+        <Route
+          path="/dashboard"
+          element={isAdmin ? <Dashboard /> : <Navigate to="/" />}
+        />
+      </Routes>
     </Router>
   );
 }

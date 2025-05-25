@@ -1,4 +1,6 @@
+// src/components/Dashboard.jsx
 import React from 'react';
+import Sidebar from './Sidebar';
 import CardDashboard from './CardDashboard';
 import PrestamosTable from './PrestamosTable';
 
@@ -10,23 +12,47 @@ function Dashboard() {
   ];
 
   return (
-    <div>
-      <div className="row">
-        <div className="col-md-4">
-          <CardDashboard iconClass="fas fa-book" title="Libros" value="120" bgColor="#4e73df" />
+    <div style={{ display: 'flex' }}>
+      <Sidebar /> {/* Barra lateral fija a la izquierda */}
+
+      <div style={{ flex: 1, marginLeft: '250px', padding: '20px' }}> {/* Espacio para contenido */}
+        <h1 style={{ marginBottom: '20px' }}>Bienvenido al Dashboard</h1>
+
+        <div className="row">
+          <div className="col-md-4">
+            <CardDashboard
+              iconClass="fas fa-book"
+              title="Libros"
+              value="120"
+              bgColor="#4e73df"
+            />
+          </div>
+          <div className="col-md-4">
+            <CardDashboard
+              iconClass="fas fa-hand-holding"
+              title="Préstamos Activos"
+              value="45"
+              bgColor="#1cc88a"
+            />
+          </div>
+          <div className="col-md-4">
+            <CardDashboard
+              iconClass="fas fa-users"
+              title="Usuarios"
+              value="30"
+              bgColor="#36b9cc"
+            />
+          </div>
         </div>
-        <div className="col-md-4">
-          <CardDashboard iconClass="fas fa-hand-holding" title="Préstamos Activos" value="45" bgColor="#1cc88a" />
-        </div>
-        <div className="col-md-4">
-          <CardDashboard iconClass="fas fa-users" title="Usuarios" value="30" bgColor="#36b9cc" />
+
+        <div style={{ marginTop: '40px' }}>
+          <PrestamosTable prestamos={prestamos} />
         </div>
       </div>
-
-      <PrestamosTable prestamos={prestamos} />
     </div>
   );
 }
 
 export default Dashboard;
+
 
