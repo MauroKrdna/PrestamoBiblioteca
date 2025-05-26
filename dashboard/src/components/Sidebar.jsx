@@ -1,8 +1,16 @@
 // src/components/Sidebar.jsx
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAdmin"); // Elimina la sesión
+    navigate("/"); // Redirige al login
+    window.location.reload(); // Recarga la app para actualizar estado en App.jsx
+  };
+
   return (
     <div
       style={{
@@ -23,10 +31,18 @@ export default function Sidebar() {
     >
       <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>Inventario</h2>
       <nav>
-        <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+          }}
+        >
           <li>
             <Link
-              to="/"
+              to="/dashboard"
               style={{
                 color: "white",
                 textDecoration: "none",
@@ -71,6 +87,28 @@ export default function Sidebar() {
             >
               Listado de Libros
             </Link>
+          </li>
+
+          {/* Botón Cerrar Sesión */}
+          <li>
+            <button
+              onClick={handleLogout}
+              style={{
+                backgroundColor: "transparent",
+                border: "none",
+                color: "white",
+                cursor: "pointer",
+                padding: "8px 12px",
+                borderRadius: "4px",
+                textAlign: "left",
+                fontSize: "1rem",
+                transition: "background-color 0.3s",
+              }}
+              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#34495E")}
+              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+            >
+              Cerrar sesión
+            </button>
           </li>
         </ul>
       </nav>

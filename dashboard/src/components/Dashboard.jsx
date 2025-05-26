@@ -1,8 +1,8 @@
-// src/components/Dashboard.jsx
 import React from 'react';
 import Sidebar from './Sidebar';
 import CardDashboard from './CardDashboard';
 import PrestamosTable from './PrestamosTable';
+import Header from './Header'; // Importamos el Header
 
 function Dashboard() {
   const prestamos = [
@@ -13,40 +13,44 @@ function Dashboard() {
 
   return (
     <div style={{ display: 'flex' }}>
-      <Sidebar /> {/* Barra lateral fija a la izquierda */}
+      <Sidebar />
 
-      <div style={{ flex: 1, marginLeft: '250px', padding: '20px' }}> {/* Espacio para contenido */}
-        <h1 style={{ marginBottom: '20px' }}>Bienvenido al Dashboard</h1>
+      <div style={{ flex: 1, marginLeft: '250px', display: 'flex', flexDirection: 'column' }}>
+        <Header /> {/* El Header en la parte superior */}
 
-        <div className="row">
-          <div className="col-md-4">
-            <CardDashboard
-              iconClass="fas fa-book"
-              title="Libros"
-              value="120"
-              bgColor="#4e73df"
-            />
-          </div>
-          <div className="col-md-4">
-            <CardDashboard
-              iconClass="fas fa-hand-holding"
-              title="Préstamos Activos"
-              value="45"
-              bgColor="#1cc88a"
-            />
-          </div>
-          <div className="col-md-4">
-            <CardDashboard
-              iconClass="fas fa-users"
-              title="Usuarios"
-              value="30"
-              bgColor="#36b9cc"
-            />
-          </div>
-        </div>
+        <div style={{ padding: '20px' }}>
+          <h1 style={{ marginBottom: '20px' }}>Bienvenido al Dashboard</h1>
 
-        <div style={{ marginTop: '40px' }}>
-          <PrestamosTable prestamos={prestamos} />
+          <div className="row">
+            <div className="col-md-4">
+              <CardDashboard
+                iconClass="fas fa-book"
+                title="Libros"
+                value="120"
+                bgColor="#4e73df"
+              />
+            </div>
+            <div className="col-md-4">
+              <CardDashboard
+                iconClass="fas fa-hand-holding"
+                title="Préstamos Activos"
+                value="45"
+                bgColor="#1cc88a"
+              />
+            </div>
+            <div className="col-md-4">
+              <CardDashboard
+                iconClass="fas fa-users"
+                title="Usuarios"
+                value="30"
+                bgColor="#36b9cc"
+              />
+            </div>
+          </div>
+
+          <div style={{ marginTop: '40px' }}>
+            <PrestamosTable prestamos={prestamos} />
+          </div>
         </div>
       </div>
     </div>
@@ -54,5 +58,6 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
 
 
