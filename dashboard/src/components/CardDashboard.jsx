@@ -1,17 +1,26 @@
-import React from 'react';
+import React from "react";
 
-function CardDashboard({ iconClass, title, value, bgColor }) {
+export default function CardDashboard({ iconClass, title, value, bgColor }) {
   return (
-    <div className="card text-white mb-4" style={{ backgroundColor: bgColor }}>
-      <div className="card-body d-flex align-items-center">
-        <i className={`${iconClass} fa-2x me-3`}></i>
-        <div>
-          <h5 className="card-title">{title}</h5>
-          <h3 className="card-text">{value}</h3>
-        </div>
+    <div
+      style={{
+        backgroundColor: bgColor,
+        color: "white",
+        padding: "20px",
+        borderRadius: "8px",
+        boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+        display: "flex",
+        alignItems: "center",
+        gap: "15px",
+        marginBottom: "20px",
+      }}
+    >
+      <i className={iconClass} style={{ fontSize: "24px" }} />
+      <div>
+        <div style={{ fontSize: "14px", opacity: 0.9 }}>{title}</div>
+        <div style={{ fontSize: "20px", fontWeight: "bold" }}>{value}</div>
       </div>
     </div>
   );
 }
 
-export default CardDashboard;

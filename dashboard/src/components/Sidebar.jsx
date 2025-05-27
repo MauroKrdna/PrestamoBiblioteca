@@ -1,14 +1,12 @@
-// src/components/Sidebar.jsx
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
   const navigate = useNavigate();
-
   const handleLogout = () => {
-    localStorage.removeItem("isAdmin"); // Elimina la sesión
-    navigate("/"); // Redirige al login
-    window.location.reload(); // Recarga la app para actualizar estado en App.jsx
+    localStorage.removeItem("isAdmin");
+    navigate("/");
+    window.location.reload();
   };
 
   return (
@@ -88,8 +86,6 @@ export default function Sidebar() {
               Listado de Libros
             </Link>
           </li>
-
-          {/* Botón Cerrar Sesión */}
           <li>
             <button
               onClick={handleLogout}
