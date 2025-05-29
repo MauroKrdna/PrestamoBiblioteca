@@ -10,7 +10,7 @@ const ShopingCardFooter = () => {
           </div>
           <div className="col-md-6 text-center text-md-end">
             <a href="#" className="text-decoration-none small text-muted me-3">Términos y condiciones</a>
-            <a href="#" className="text-decoration-none small text-muted">Política de privacidad</a>
+            <a href="#" className="text-decoration-none small text-muted">Política de privacidadd</a>
           </div>
         </div>
       </div>
