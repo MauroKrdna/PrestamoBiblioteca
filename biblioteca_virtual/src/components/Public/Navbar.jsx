@@ -19,6 +19,9 @@ export default function Navbar() {
         <Link to="/Login" className="text-white me-5">
           <i className="fa-regular fa-user me-1"></i>Ingresar
         </Link>
+        <Link to="/Register" className="text-white me-5">
+          <i className="fa-regular fa-user me-1"></i>Registrar
+        </Link>
         
         {/* Enlace del carrito */}
         <Link to="/Carrito" className="carrito ms-3 text-white position-relative">

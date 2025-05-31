@@ -13,6 +13,7 @@ import BookDetailPage from "./pages/BookDetailPage";
 import PrestamoPage from "./pages/PrestamoPage";
 import Login from "./components/Public/Login"; // 📲 Importa el Login
 import Dashboard from "./pages/Dashboard"; // 🔑 Agrega el Dashboard privado
+import Register from "./components/Public/Register";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/Contact" element={<ContactPage />} />
         <Route path="/Carrito" element={<CartPage />} />
         <Route path="/Login" element={<Login />} />  {/* 📲 Ruta pública para Login */}
+        <Route path="/Register" element={<Register/>}/>
 
         {/* 🔒 Rutas protegidas */}
         <Route path="/Checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
