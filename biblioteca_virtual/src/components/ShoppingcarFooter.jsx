@@ -18,4 +18,4 @@ const ShopingCardFooter = () => {
   );
 };
 
-export default Footer;
+export default ShopingCardFooter;

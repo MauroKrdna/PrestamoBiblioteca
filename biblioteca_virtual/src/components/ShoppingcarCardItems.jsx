@@ -47,4 +47,4 @@ const ShopingCardCartItems = ({ items }) => {
   );
 };
 
-export default CartItems;
+export default ShopingCardCartItems;

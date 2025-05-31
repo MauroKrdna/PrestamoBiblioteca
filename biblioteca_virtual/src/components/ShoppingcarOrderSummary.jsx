@@ -41,4 +41,4 @@ const ShopingCardOrderSummary = ({ bookCount }) => {
   );
 };
 
-export default OrderSummary;
+export default ShopingCardOrderSummary;
