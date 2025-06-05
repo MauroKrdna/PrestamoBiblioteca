@@ -42,6 +42,8 @@ function App() {
         <Route path="/carrito" element={<CartPage />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/HomePage" element={<HomePage />} />
+
 
         {/* Rutas protegidas */}
         <Route

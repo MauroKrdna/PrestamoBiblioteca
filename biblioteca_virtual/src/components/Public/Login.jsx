@@ -32,7 +32,7 @@ export default function Login() {
     login({ name: data.name, email: data.email, role: data.role });
 
     setTimeout(() => {
-      navigate("/home"); // Redirige solo después de que el usuario se ha guardado correctamente
+      navigate("/HomePage"); // Redirige solo después de que el usuario se ha guardado correctamente
     }, 500);
 
   } catch (error) {

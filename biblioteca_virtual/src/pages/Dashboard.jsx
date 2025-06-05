@@ -1,5 +1,5 @@
 import React from "react";
-import Dashboardhome from "../dashBoard/Dashboard";
+import Dashboardhome from "../dashBoard/Dashboardhome";
 
 
 export default function Dashboard() {
