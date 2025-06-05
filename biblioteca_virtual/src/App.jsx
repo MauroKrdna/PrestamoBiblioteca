@@ -26,6 +26,7 @@ function App() {
         <Route path="/Contact" element={<ContactPage />} />
         <Route path="/Carrito" element={<CartPage />} />
         <Route path="/Login" element={<Login />} />  {/* 📲 Ruta pública para Login */}
+        <Route path="/home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
         <Route path="/Register" element={<Register/>}/>
 
         {/* 🔒 Rutas protegidas */}

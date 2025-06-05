@@ -5,54 +5,41 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [users, setUsers] = useState(
-    JSON.parse(localStorage.getItem("users")) || []
-  );
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      setUser(storedUser);
+      setUser(JSON.parse(storedUser));
     }
   }, []);
 
-  // Función para registrar un nuevo usuario
-  const register = (newUser) => {
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-    const userExists = storedUsers.find((u) => u.email === newUser.email);
+  const login = async ({ email, password }) => {
+    try {
+      const res = await fetch("http://localhost/api/login.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-    if (userExists) {
-      alert("El correo ya está registrado.");
-      return;
+      const data = await res.json();
+      console.log("Respuesta de la API en AuthContext:", data);
+
+      if (!res.ok || data.status === "error") {
+        alert("Correo o contraseña incorrectos.");
+        return;
+      }
+
+      setUser(data);
+      localStorage.setItem("user", JSON.stringify(data)); // ⚡ Persistir sesión
+      navigate("/home"); // ⚡ Redirigir a la página correcta
+
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+      alert("Error de conexión con el servidor.");
     }
-
-    const updatedUsers = [...storedUsers, newUser];
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-    setUsers(updatedUsers);
-    setUser(newUser);
-    localStorage.setItem("user", JSON.stringify(newUser));
-    navigate("/dashboard");
   };
 
-  // Función para iniciar sesión
-  const login = ({ email, password }) => {
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-    const existingUser = storedUsers.find(
-      (u) => u.email === email && u.password === password
-    );
-
-    if (!existingUser) {
-      alert("Correo o contraseña incorrectos.");
-      return;
-    }
-
-    setUser(existingUser);
-    localStorage.setItem("user", JSON.stringify(existingUser));
-    navigate("/dashboard");
-  };
-
-  // Función para cerrar sesión
   const logout = () => {
     setUser(null);
     localStorage.removeItem("user");
@@ -60,7 +47,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
