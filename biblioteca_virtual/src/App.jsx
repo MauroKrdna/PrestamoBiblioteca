@@ -1,6 +1,7 @@
-import { Routes, Route } from "react-router-dom"; 
-import { AuthProvider } from "./context/AuthContext";  // 🔥 Importa AuthProvider
-import ProtectedRoute from "./components/Public/ProtectedRoute";  // 🔒 Importa la ruta protegida
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/Public/ProtectedRoute";
 
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
@@ -11,30 +12,69 @@ import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import BookDetailPage from "./pages/BookDetailPage";
 import PrestamoPage from "./pages/PrestamoPage";
-import Login from "./components/Public/Login"; // 📲 Importa el Login
-import Dashboard from "./pages/Dashboard"; // 🔑 Agrega el Dashboard privado
+import Login from "./components/Public/Login";
 import Register from "./components/Public/Register";
+import Dashboard from "./pages/Dashboard";
+
+
 
 function App() {
+  const [isAdmin, setIsAdmin] = React.useState(localStorage.getItem("isAdmin") === "true");
+
+  const handleLogin = () => {
+    setIsAdmin(true);
+    localStorage.setItem("isAdmin", "true");
+  };
+
+  const handleLogout = () => {
+    setIsAdmin(false);
+    localStorage.removeItem("isAdmin");
+  };
+
   return (
-    <AuthProvider> {/* 🔥 Envuelve todo con AuthProvider */}
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/About" element={<AboutPage />} />
-        <Route path="/Books" element={<BooksPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/books" element={<BooksPage />} />
         <Route path="/books/:id" element={<BookDetailPage />} />
-        <Route path="/Contact" element={<ContactPage />} />
-        <Route path="/Carrito" element={<CartPage />} />
-        <Route path="/Login" element={<Login />} />  {/* 📲 Ruta pública para Login */}
-        <Route path="/home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
-        <Route path="/Register" element={<Register/>}/>
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/carrito" element={<CartPage />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/register" element={<Register />} />
 
-        {/* 🔒 Rutas protegidas */}
-        <Route path="/Checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
-        <Route path="/Prestamos" element={<ProtectedRoute><PrestamoPage /></ProtectedRoute>} />
-        <Route path="/Dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        {/* Rutas protegidas */}
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <CheckoutPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/prestamos"
+          element={
+            <ProtectedRoute>
+              <PrestamoPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={isAdmin ? <Dashboard onLogout={handleLogout} /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/crear"
+          element={isAdmin ? <CrearLibro /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/listado"
+          element={isAdmin ? <VerLibros /> : <Navigate to="/" />}
+        />
 
-        <Route path="/*" element={<NotFound />} />
+        {/* Ruta por defecto */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AuthProvider>
   );

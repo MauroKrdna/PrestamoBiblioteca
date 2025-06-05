@@ -1,10 +1,9 @@
 import React from "react";
+import Dashboardhome from "../dashBoard/Dashboard";
+
 
 export default function Dashboard() {
   return (
-    <div>
-      <h2>Bienvenido al Dashboard</h2>
-      <p>Aquí puedes administrar tu cuenta.</p>
-    </div>
+    <Dashboardhome/>
   );
 }

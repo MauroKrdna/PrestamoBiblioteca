@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f6fa;
+}
+
+.main {
+  flex: 1;
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  padding: 80px 20px 20px 20px;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: #2C3E50;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.section {
+  margin-top: 40px;
+}
