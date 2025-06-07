@@ -5,8 +5,7 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
+  
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -23,7 +22,7 @@ export function AuthProvider({ children }) {
       });
 
       const data = await res.json();
-      console.log("Respuesta de la API en AuthContext:", data);
+      console.log("✅ Respuesta de la API:", data);
 
       if (!res.ok || data.status === "error") {
         alert("Correo o contraseña incorrectos.");
@@ -32,7 +31,6 @@ export function AuthProvider({ children }) {
 
       setUser(data);
       localStorage.setItem("user", JSON.stringify(data)); // ⚡ Persistir sesión
-      navigate("/home"); // ⚡ Redirigir a la página correcta
 
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
@@ -43,7 +41,6 @@ export function AuthProvider({ children }) {
   const logout = () => {
     setUser(null);
     localStorage.removeItem("user");
-    navigate("/login");
   };
 
   return (
