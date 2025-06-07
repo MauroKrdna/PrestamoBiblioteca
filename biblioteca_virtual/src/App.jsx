@@ -40,6 +40,7 @@ function App() {
         <Route path="/books/:id" element={<BookDetailPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/carrito" element={<CartPage />} />
+        <Route path ="/Checkout" element ={<CheckoutPage/>}/>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/HomePage" element={<HomePage />} />
