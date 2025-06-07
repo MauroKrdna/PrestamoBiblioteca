@@ -3,6 +3,7 @@ import { books } from "../../assets/js/booksData";
   
 
 export default function Books() {
+
   return (
     <section className="featured-books" id="books">
         <div className="container">
@@ -22,9 +23,16 @@ export default function Books() {
                     <p className="publisher"><strong>Editorial:</strong> {book.publisher}</p>
                     <p className="price"><strong>Precio:</strong> {book.price}</p>
                     <div className="book-footer">
-                        <Link to ={`/books/${book.id}`} className="btn-book">
-                        <i className="fas fa-book-open"></i> Solicitar
+                        <Link
+                            to={book.available ? `/books/${book.id}` : "#"}  // Solo navega si está disponible
+                            className={`btn-book ${!book.available ? "disabled" : ""}`} // Agrega clase disabled si no disponible
+                            onClick={(e) => {
+                                if (!book.available) e.preventDefault();  // Evita navegación si no disponible
+                            }}
+                            >
+                            <i className="fas fa-book-open"></i> Solicitar
                         </Link>
+
                         <span className="availability">Disponible</span>
                     </div>
                     </div>
